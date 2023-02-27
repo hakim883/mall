@@ -1,0 +1,21 @@
+server:
+  port: 16000
+
+spring:
+  application:
+    name: oauth2-api
+  redis:
+    port: 6379
+    host: 123.56.170.249
+    database: 0
+    password: 123456
+
+eureka:
+  instance:
+    #使用ip地址向Eureka注册
+    prefer-ip-address: true
+    #上面的配置已经可以使用ip注册了，但显示的还是主机名，所以这里设置显示的注册名
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://eurekaServer13000:13000/eureka/, http://eurekaServer13001:13001/eureka/, http://eurekaServer13002:13002/eureka/
